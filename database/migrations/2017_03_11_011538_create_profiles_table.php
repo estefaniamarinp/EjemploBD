@@ -21,8 +21,11 @@ class CreateProfilesTable extends Migration
             $table->string('city', 45)->nullable();
             $table->string('country', 45)->nullable();
             $table->string('website', 128)->nullable();
-
+            $table->integer('user_id')->unsigned();//se crea el campo para la FK
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->OnDelete('cascade');// se establece la relación foranea y se definen las politicas para actualizar y borrar en cascada
+
         });
     }
 
