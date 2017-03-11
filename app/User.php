@@ -28,22 +28,23 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function profile()
-    {
+    public function profile(){
+
         return $this->hasOne('App\Profile');//Un usuario tiene un perfil
     }
 
-    public function products()
-    {
+    public function products(){
+
         return $this->hasMany('App\Product');//Un usuario tiene muchos productos
     }
 
-    public function groups()
-    {
+    public function groups(){
+
         return $this->belongsToMany('App\Group');//Un usuario pertenece a muchos grupos
     }
 
     public function setPasswordAttribute($plainPassword){
+
         $this->attributes['password'] = Hash::make($plainPassword);//cifrar el password
     }
 

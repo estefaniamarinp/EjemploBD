@@ -19,6 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::resource('users','UserController');
+Route::resource('users','UserController'); //Crea todas las rutas del controlador User
 
 
