@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -15,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', //autoriza el envío masivo, son los campos que el usuario llena en los formularios
     ];
 
     /**
@@ -39,8 +40,11 @@ class User extends Authenticatable
 
     public function groups()
     {
-        return $this->belongsToMany('App\Group');//Un usuario tiene muchos grupos
+        return $this->belongsToMany('App\Group');//Un usuario pertenece a muchos grupos
     }
 
+    public function setPasswordAttribute($plainPassword){
+        $this->attributes['password'] = Hash::make($plainPassword);//cifrar el password
+    }
 
 }
