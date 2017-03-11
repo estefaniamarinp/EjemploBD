@@ -9,6 +9,12 @@
 
                 <div class="panel-body">
                     You are logged in!
+
+                    <ol>
+                        <li>
+                            <a href="{!! url('users/') !!}"> Gestión de registro </a>
+                        </li>
+                    </ol>
                 </div>
             </div>
         </div>

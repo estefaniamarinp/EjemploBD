@@ -19,6 +19,19 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::resource('users','UserController'); //Crea todas las rutas del controlador User
+//Crea todas las rutas del controlador User
+//Route::resource('users','UserController');
+
+//Route::get('/protegida','SitioController@protegida')->middleware('auth');
+//Route::get('/sinproteccion','SitioController@sinproteccion');
+
+//Grupo de rutas que requieren autenticación para acceder
+Route::group(['middleware' => 'auth'],
+             function(){
+    Route::resource('users','UserController');
+});
+
+
+
 
 
